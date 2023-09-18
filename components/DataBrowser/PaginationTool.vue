@@ -80,6 +80,12 @@ export default {
       },
     },
 
+    "$route.query.limit": {
+      handler() {
+        this.handlePageLimit(this.$route.query.page, this.$route.query.limit);
+      },
+    },
+
     "$route.query.order": {
       handler(val) {
         this.handleOrder(val);
