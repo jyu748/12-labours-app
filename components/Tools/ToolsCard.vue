@@ -13,7 +13,7 @@
         </span>
       </div>
       <div class="tools-item-card__button">
-        <nuxt-link :to="{ name: 'tools-detail', params: { detail: toolsItem.slug}}">
+        <nuxt-link :to="{ name: 'resources-tools-detail', params: { detail: toolsItem.slug}}">
           <el-button>
             READ MORE
           </el-button>
