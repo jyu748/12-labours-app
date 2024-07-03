@@ -53,25 +53,6 @@
     vuex "^3.5.1"
     webpack-node-externals "^2.5.2"
 
-"@12-labours/twelve-labours-design-system-components@0.1.0-beta-4":
-  version "0.1.0-beta-4"
-  resolved "https://registry.yarnpkg.com/@12-labours/twelve-labours-design-system-components/-/twelve-labours-design-system-components-0.1.0-beta-4.tgz#e50273006fe1225f52cdc3b20d2dfe51edc2adb1"
-  integrity sha512-dK3c8XVyKe9B5wv7b1h18pKzGR3Ex+x/0k4+pIuKD81PqrJdUpIumjt6Z1yRJY7HA4ToHBTBI19tuWwox8VVOg==
-  dependencies:
-    "@carbon/grid" "10.17.0"
-    core-js "^3.6.5"
-    element-ui "2.4.11"
-    file-loader "^6.2.0"
-    generate-changelog "^1.8.0"
-    http-server "^0.11.1"
-    sass "^1.26.9"
-    sass-loader "^8.0.2"
-    storybook-vue-router "^1.0.7"
-    url-loader "^4.1.1"
-    vue "^2.6.11"
-    vue-router "^3.5.1"
-    vue-svgicon "^3.2.9"
-
 "@abi-software/flatmap-viewer@^2.4.2-b.3":
   version "2.4.2-b.3"
   resolved "https://registry.yarnpkg.com/@abi-software/flatmap-viewer/-/flatmap-viewer-2.4.2-b.3.tgz#231a8fb698dcf098fe60a7009af94f7073d0e301"
@@ -319,6 +300,25 @@
   dependencies:
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
+
+"@andreshouse/twelve-labours-design-system-components@0.1.0-alpha-9":
+  version "0.1.0-alpha-9"
+  resolved "https://registry.yarnpkg.com/@andreshouse/twelve-labours-design-system-components/-/twelve-labours-design-system-components-0.1.0-alpha-9.tgz#460cab24d7e21c6eb1ad9447dd5368183b8c3d8f"
+  integrity sha512-1/neOkFhWnPK4xGQ5ZlHqwY8PDT19hVtYeH3bcvm4ZOnilrzlHw82YE4sYl5b0PenPnsn6Dba4i1hQop4EBQjA==
+  dependencies:
+    "@carbon/grid" "10.17.0"
+    core-js "^3.6.5"
+    element-ui "2.4.11"
+    file-loader "^6.2.0"
+    generate-changelog "^1.8.0"
+    http-server "^0.11.1"
+    sass "^1.26.9"
+    sass-loader "^8.0.2"
+    storybook-vue-router "^1.0.7"
+    url-loader "^4.1.1"
+    vue "^2.6.11"
+    vue-router "^3.5.1"
+    vue-svgicon "^3.2.9"
 
 "@babel/code-frame@^7.12.11":
   version "7.22.10"

@@ -3,7 +3,7 @@
     <div class="banner-home">
       <div class="title-box">
         <span>
-          Welcome to the <br /> 12 Labours Portal, the gateway<br /> to predictive <br />medical modelling
+          Welcome to the home of the<br/>12 Labours project
         </span>
       </div>
     </div>
