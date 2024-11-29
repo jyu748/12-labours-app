@@ -2,6 +2,8 @@
   <div class="page-outer vertical-flex">
     <breadcrumb-trail :breadcrumb="breadcrumb" :title="pageTitle" />
     <banner :banner-data="banner.values" height="30rem"/>   <!-- Optional height attribute to display varying heights-->
+    <latest-tools :toolsList="topTools.toolsList"/>
+    <!--
     <div class="container-default">
       <div class="cards-in-row">
         <card :specs="dataAndModels"/>
@@ -9,6 +11,7 @@
         <card :specs="workflows"/>
       </div>          
     </div>
+    -->
     <div class="container-default shaded">
        <div class="top-heading">
         <h1>
@@ -33,7 +36,8 @@ export default {
 
   async asyncData({$graphcms}) {  
     const banner= await graphcmsQuery.banner($graphcms, 'resources');
-    return {banner}
+    const topTools= await graphcmsQuery.topTools($graphcms, 3);
+    return {banner, topTools}
   },
 
   data: () => {
@@ -50,21 +54,15 @@ export default {
       dataAndModels:{
         title:' Data and Models',
         imgFile:'patient-in-frame.png',
-        detail:'  Want the latest research data and models.',
-        btnLink:{caption:'Find Data & Models', to:'/data'}
+        detail:'  Want the latest research data and models. Sorry, you\'ll need to wait for the full portal.',
+        //btnLink:{caption:'Find Data & Models', to:'/data'}
+        btnLink:{caption:'No Data & Models here', to:'/'}
       },
       tools:{
         title:'Tools',
         imgFile:'researcher-in-frame.png',
         detail:'Want the latest research tools.',
-        btnLink:{caption:'Find Tools', to: {
-          path: '/data/browser',
-          query: {
-            type: 'tools',
-            page: 1,
-            limit: 10,
-          }
-        }}
+        btnLink:{caption:'Find Tools', to:'/resources/tools'}
       },
       workflows:{
         title:'Workflows',

@@ -10,6 +10,9 @@ import {
   topEventsQuery,
   eventQuery,
   eventsCategoryQuery,
+  topToolsQuery,
+  toolsQuery,
+  toolsCategoryQuery,
   feedbackReasonQuery,
   contactReasonQuery,
   contactAreaQuery,
@@ -109,6 +112,33 @@ async function eventsCategory(graphcms) {
   return await graphcms.request(eventsCategoryQuery);
 }
 
+async function topTools(graphcms, fetchCount) {
+  if (!graphcms.url) {
+    return cms_content.topTools;
+  }
+  const variable = {
+    fetchCount: fetchCount,
+  };
+  return await graphcms.request(topToolsQuery, variable);
+}
+
+async function tools(graphcms, slug) {
+  if (!graphcms.url) {
+    return cms_content.tools[slug];
+  }
+  const variable = {
+    slug: slug,
+  };
+  return await graphcms.request(toolsQuery, variable);
+}
+
+async function toolsCategory(graphcms) {
+  if (!graphcms.url) {
+    return cms_content.toolsCategory;
+  }
+  return await graphcms.request(toolsCategoryQuery);
+}
+
 async function feedbackReason(graphcms) {
   if (!graphcms.url) {
     return cms_content.feedbackReason;
@@ -140,6 +170,9 @@ export default {
   topEvents,
   event,
   eventsCategory,
+  topTools,
+  tools,
+  toolsCategory,
   banner,
   feedbackReason,
   contactReason,

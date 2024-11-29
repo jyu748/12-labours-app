@@ -131,6 +131,47 @@ const eventsCategoryQuery = gql`
   }
 `;
 
+const topToolsQuery = gql`
+  query($fetchCount: Int) {
+    toolsList: toolsItems(first: $fetchCount, orderBy: publishedDate_DESC) {
+      publishedDate
+      title
+      image {
+        url
+      }
+      category
+      blurb
+      slug
+    }
+  }
+`;
+
+const toolsQuery = gql`
+  query($slug: String!) {
+    toolsItem: toolsItems(where: { slug: $slug }) {
+      publishedDate
+      title
+      image {
+        url
+      }
+      blurb
+      detail {
+        html
+      }
+    }
+  }
+`;
+
+const toolsCategoryQuery = gql`
+  query introspectToolsCategoryType {
+    __type(name: "ToolsCategory") {
+      enumValues {
+        name
+      }
+    }
+  }
+`;
+
 const feedbackReasonQuery = gql`
   query introspectFeedbackReasonType {
     __type(name: "FeedbackReason") {
@@ -172,6 +213,9 @@ module.exports = {
   topEventsQuery,
   eventQuery,
   eventsCategoryQuery,
+  topToolsQuery,
+  toolsQuery,
+  toolsCategoryQuery,
   feedbackReasonQuery,
   contactReasonQuery,
   contactAreaQuery,

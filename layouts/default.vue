@@ -26,11 +26,11 @@ export default {
     return {
       headerLogo: require("../static/img/12-labours-logo-black.png"),
       headerLinks: [
-        {
-          title: "data-and-models",
-          displayTitle: "Data & Models",
-          href: "/data?type=dataset",
-        },
+        // {
+        //   title: "data-and-models",
+        //   displayTitle: "Data & Models",
+        //   href: "/data?type=dataset",
+        // },
         {
           title: "resources",
           displayTitle: "Resources",

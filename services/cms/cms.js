@@ -14,6 +14,9 @@ const {
   topEventsQuery,
   eventQuery,
   eventsCategoryQuery,
+  topToolsQuery,
+  toolsQuery,
+  toolsCategoryQuery,
   feedbackReasonQuery,
   contactReasonQuery,
   contactAreaQuery,
@@ -29,16 +32,20 @@ const withNameVariable = {
 const withCountVariable = {
   topNews: { query: topNewsQuery, count: 3 },
   topEvents: { query: topEventsQuery, count: 5 },
+  topTools: { query: topToolsQuery, count: 3 },
 };
 
 const withSlugVariable = {
   news: { query: newsQuery, top: "topNews" },
   event: { query: eventQuery, top: "topEvents" },
+  tools: { query: toolsQuery, top: "topTools" },
+
 };
 
 const withoutVariable = {
   newsCategory: newsCategoryQuery,
   eventsCategory: eventsCategoryQuery,
+  toolsCategory: toolsCategoryQuery,
   feedbackReason: feedbackReasonQuery,
   contactReason: contactReasonQuery,
   contactArea: contactAreaQuery,

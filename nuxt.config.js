@@ -50,13 +50,13 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     "element-ui/lib/theme-chalk/index.css",
-    "@12-labours/twelve-labours-design-system-components/dist/twelve-labours-design-system-components.css",
+    "@andreshouse/twelve-labours-design-system-components/dist/twelve-labours-design-system-components.css",
   ],
 
   //Improt scss resources to all pages/components
   styleResources: {
     scss: [
-      "@12-labours/twelve-labours-design-system-components/src/assets/_variables.scss",
+      "@andreshouse/twelve-labours-design-system-components/src/assets/_variables.scss",
       "@/assets/_common.scss",
     ],
   },
@@ -78,6 +78,7 @@ export default {
       "~/components",
       "~/components/News",
       "~/components/Events",
+      "~/components/Tools",
       "~/components/PortalHelp",
       "~/components/Contact",
     ],
