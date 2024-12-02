@@ -11,8 +11,8 @@
       </div>
     </div>
     <!-- Project Aims & Information -->
-    <div class="project container-default flex-box">
-      <div class="project__item default-inner">
+    <div class="project container-default">
+      <div>
         <h1 class="top-heading">
           {{projectAims.title.toUpperCase()}}
         </h1>
@@ -21,7 +21,7 @@
           <div v-html="content.html"></div>
         </div>
       </div>
-      <div class="project__item default-inner ">
+      <div>
         <h1 class="top-heading">
           PROJECT INFORMATION
         </h1>
