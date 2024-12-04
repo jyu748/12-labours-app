@@ -25,13 +25,13 @@
         <h1 class="top-heading">
           PROJECT INFORMATION
         </h1>
-       <el-collapse>
-          <el-collapse-item  v-for="(item,index) in projectInfo.title"  :key="index" :title="item.toUpperCase()" :name="index">
-            <div v-html="projectInfo.content[index].html"></div>
-            <div class="nav-button">
-              <nuxt-link :to="projectInfo.link[index]">
+      <el-collapse>
+          <el-collapse-item  v-for="(item,index) in projectInfo"  :key="index" :title="item.title[0].toUpperCase()" :name="index">
+            <div v-html="item.content[0].html"></div>
+            <div class="nav-button" v-if="item.linkCaption.length">
+              <nuxt-link v-if="item.link.length" :to="item.link[0]">
                 <el-button>
-                  {{projectInfo.linkCaption[index]}}
+                  {{item.linkCaption[0]}}
                 </el-button>
               </nuxt-link>
             </div>
@@ -54,20 +54,25 @@ import graphcmsQuery from '@/services/graphcmsQuery'
 export default {
   name: 'AboutPage',
 
-   async asyncData({$graphcms}) {
+  async asyncData({$graphcms}) {
     const [dataAbout, dataAims, dataInfo, dataPartners,topNews,topEvents] = await Promise.all([ 
       graphcmsQuery.content($graphcms, 'about_long'),
       graphcmsQuery.multiContent($graphcms, 'project_aims'),
-      graphcmsQuery.projectInformation($graphcms, 'info'),
+      graphcmsQuery.projectInformation($graphcms, 'project-info'),
       graphcmsQuery.multiContent($graphcms, 'partners'),
       graphcmsQuery.topNews($graphcms, 3),
       graphcmsQuery.topEvents($graphcms, 5)
     ]);
-
+    const projects = await Promise.all(
+      dataInfo.values.title.map(async (title) => {
+        const project = await graphcmsQuery.projectInformation($graphcms, title)
+        return project.values
+      })
+    )
     return {
       about: dataAbout.values,
       projectAims: dataAims.values,   
-      projectInfo: dataInfo.values,
+      projectInfo: projects,
       partners: dataPartners.values,
       topNews,
       topEvents
