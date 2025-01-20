@@ -3,7 +3,6 @@
     <breadcrumb-trail :breadcrumb="breadcrumb" :title="pageTitle" />
     <div class="container-default">
       <h1>Technical Resources</h1>
-      Some info on CellML and MAPclient, etc. Mostly some documentation. It can be the same as SPARC.
     </div>
   </div>
 </template>
