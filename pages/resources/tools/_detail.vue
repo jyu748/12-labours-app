@@ -69,7 +69,7 @@ export default {
           label: "Resources",
         },
         {
-          to: { name: "tools" },
+          to: { name: "resources-tools" },
           label: "Tools",
         },
       ],
