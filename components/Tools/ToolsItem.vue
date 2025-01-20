@@ -5,19 +5,19 @@
         <img :src="toolsItem.image.url"></img>
       </div>
       <div class="tools-item__info vertical-flex">
-        <div class="item-title display-ellipsis --2">     
-          <nuxt-link :to="{ name: 'resources-tools-detail', params: { detail: toolsItem.slug}}">
-            <h4>{{toolsItem.title}}</h4>
+        <div class="item-title display-ellipsis --2">
+          <nuxt-link :to="{ name: 'resources-tools-detail', params: { detail: toolsItem.slug } }">
+            <h4>{{ toolsItem.title }}</h4>
           </nuxt-link>
         </div>
         <div class="item-date">
-          <span>
+          <!-- <span>
             {{this.$formatDDMonthYear(toolsItem.publishedDate)}}
-          </span>
+          </span> -->
         </div>
         <div class="item-detail">
-          <span> 
-            {{toolsItem.blurb}}
+          <span>
+            {{ toolsItem.blurb }}
           </span>
         </div>
       </div>
@@ -30,65 +30,65 @@
 export default {
   name: 'ToolsItem',
 
-   props: {
+  props: {
     toolsItem: {
-      default: () => {}
+      default: () => { }
     }
-   }
+  }
 }
 </script>
 
 
 <style scoped lang="scss">
+.tools-item-container {
+  display: flex;
+}
 
-  .tools-item-container{
-    display:flex; 
+.tools-item {
+  display: flex;
+  column-gap: 1.5rem;
+
+  @media only screen and (max-width: $viewport-sm) {
+    flex-direction: column;
+    row-gap: 1.5rem;
   }
 
-  .tools-item{
-    display:flex;  
-    column-gap:1.5rem;
-    @media only screen and (max-width:  $viewport-sm){
-      flex-direction:column;
-      row-gap:1.5rem;       
-    }
+  &__image {
+    img {
+      border-radius: 0.75rem;
+      display: block;
+      width: 15.5rem;
+      height: 8.63rem;
+      object-fit: cover;
 
-    &__image{                       
-      img{
-        border-radius:0.75rem;
-        display:block;
-        width: 15.5rem;
-        height: 8.63rem; 
-        object-fit:cover;
-
-        @media only screen and (max-width:  $viewport-sm){   
-          width:70%; 
-          height: auto;     
-        } 
+      @media only screen and (max-width: $viewport-sm) {
+        width: 70%;
+        height: auto;
       }
     }
-
-    &__info{
-      .item-title{  
-        a{
-          text-decoration:none !important;
-        }
-      }
-      
-      .item-date{
-        padding-top:0.38rem;
-        padding-bottom:0.75rem;            
-        span{
-          font-size:0.88rem;
-          line-height:1.25rem;
-        }
-      }
-      
-      .item-detail{
-        text-align:justify;             
-        background-color: $cochlear;     
-      }   
-    }      
   }
 
+  &__info {
+    .item-title {
+      a {
+        text-decoration: none !important;
+      }
+    }
+
+    .item-date {
+      padding-top: 0.38rem;
+      padding-bottom: 0.75rem;
+
+      span {
+        font-size: 0.88rem;
+        line-height: 1.25rem;
+      }
+    }
+
+    .item-detail {
+      text-align: justify;
+      background-color: $cochlear;
+    }
+  }
+}
 </style>

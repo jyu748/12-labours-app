@@ -1,8 +1,9 @@
 <template>
   <div class="page-outer vertical-flex">
     <breadcrumb-trail :breadcrumb="breadcrumb" :title="pageTitle" />
-    <banner :banner-data="banner.values" height="30rem"/>   <!-- Optional height attribute to display varying heights-->
-    <latest-tools :toolsList="topTools.toolsList"/>
+    <banner :banner-data="banner.values" height="30rem" />
+    <!-- Optional height attribute to display varying heights-->
+    <latest-tools :toolsList="topTools.toolsList" />
     <!--
     <div class="container-default">
       <div class="cards-in-row">
@@ -13,31 +14,42 @@
     </div>
     -->
     <div class="container-default shaded">
-       <div class="top-heading">
+      <div class="top-heading">
         <h1>
           RESOURCES
         </h1>
-      </div>    
+      </div>
       <div class="cards-in-row">
-        <card :specs="technicalResources"/>
-        <card :specs="educationalResources"/>
-        <card :specs="medicalResources"/>
+        <card :specs="technicalResources" />
+        <card :specs="educationalResources" />
+        <card :specs="medicalResources" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  
-import graphcmsQuery from '@/services/graphcmsQuery'
+import graphcmsQuery from "@/services/graphcmsQuery";
+
+const constructTopTools = (tools) => {
+  if (!tools.toolsList) return [];
+  return {
+    toolsList: tools.toolsList.map((tool) => {
+      return {
+        ...tool,
+        title: tool.title.replace(/ *\([^)]*\) */g, ""),
+      };
+    }),
+  };
+};
 
 export default {
   name: "ResourcesPage",
 
-  async asyncData({$graphcms}) {  
-    const banner= await graphcmsQuery.banner($graphcms, 'resources');
-    const topTools= await graphcmsQuery.topTools($graphcms, 3);
-    return {banner, topTools}
+  async asyncData({ $graphcms }) {
+    const banner = await graphcmsQuery.banner($graphcms, "resources");
+    const topTools = await graphcmsQuery.topTools($graphcms, 3);
+    return { banner, topTools: constructTopTools(topTools) };
   },
 
   data: () => {
@@ -49,61 +61,68 @@ export default {
             name: "index",
           },
           label: "Home",
-        }
+        },
       ],
-      dataAndModels:{
-        title:' Data and Models',
-        imgFile:'patient-in-frame.png',
-        detail:'  Want the latest research data and models. Sorry, you\'ll need to wait for the full portal.',
+      dataAndModels: {
+        title: " Data and Models",
+        imgFile: "patient-in-frame.png",
+        detail:
+          "  Want the latest research data and models. Sorry, you'll need to wait for the full portal.",
         //btnLink:{caption:'Find Data & Models', to:'/data'}
-        btnLink:{caption:'No Data & Models here', to:'/'}
+        btnLink: { caption: "No Data & Models here", to: "/" },
       },
-      tools:{
-        title:'Tools',
-        imgFile:'researcher-in-frame.png',
-        detail:'Want the latest research tools.',
-        btnLink:{caption:'Find Tools', to:'/resources/tools'}
+      tools: {
+        title: "Tools",
+        imgFile: "researcher-in-frame.png",
+        detail: "Want the latest research tools.",
+        btnLink: { caption: "Find Tools", to: "/resources/tools" },
       },
-      workflows:{
-        title:'Workflows',
-        imgFile:'clinician-in-frame.png',
-        detail:'camera images -> point clouds -> scaffolds -> reduced parameter statistical shape models',
-        btnLink:{caption:'Find Workflows', to: {
-          path: '/data/browser',
-          query: {
-            type: 'workflows',
-            page: 1,
-            limit: 10,
-          }
-        }}
+      workflows: {
+        title: "Workflows",
+        imgFile: "clinician-in-frame.png",
+        detail:
+          "camera images -> point clouds -> scaffolds -> reduced parameter statistical shape models",
+        btnLink: {
+          caption: "Find Workflows",
+          to: {
+            path: "/data/browser",
+            query: {
+              type: "workflows",
+              page: 1,
+              limit: 10,
+            },
+          },
+        },
       },
-      technicalResources:{
-        title:'Technical Resources',
-        imgFile:'researcher-in-frame.png',
-        detail:'Learn all about API Access, how to use the modelling workflows and how to connect devices to models.',
+      technicalResources: {
+        title: "Technical Resources",
+        imgFile: "researcher-in-frame.png",
+        detail:
+          "Learn all about API Access, how to use the modelling workflows and how to connect devices to models.",
         //btnLink:{caption:'View Technical Resources', to:'/'}
-        btnLink:{caption:'View More', to:'/resources/technical'}
+        btnLink: { caption: "View More", to: "/resources/technical" },
       },
-      educationalResources:{
-        title:'Educational Resources',
-        imgFile:'clinician-in-frame.png',
-        detail:'Learn all about the educational benefits the 12 Labours portal could help.',
+      educationalResources: {
+        title: "Educational Resources",
+        imgFile: "clinician-in-frame.png",
+        detail:
+          "Learn all about the educational benefits the 12 Labours portal could help.",
         //btnLink:{caption:'View Educational Resources', to:'/resources/educational'}
-        btnLink:{caption:'View More',  to:'/resources/educational'}
+        btnLink: { caption: "View More", to: "/resources/educational" },
       },
-      medicalResources:{
-        title:'Medical Resources',
-        imgFile:'patient-in-frame.png',
-        detail:'Learn all about the medical benefits the 12 Labours portal could help, including disease information and publications.',
+      medicalResources: {
+        title: "Medical Resources",
+        imgFile: "patient-in-frame.png",
+        detail:
+          "Learn all about the medical benefits the 12 Labours portal could help, including disease information and publications.",
         //btnLink:{caption:'View Medical Resources', to:'/'}
-        btnLink:{caption:'View More', to:'/resources/medical'}
-      }
-    }
-  }
-}
-
+        btnLink: { caption: "View More", to: "/resources/medical" },
+      },
+    };
+  },
+};
 </script>
 
 <style scoped lang="scss">
-  .must-have-css{}
+.must-have-css {}
 </style>
