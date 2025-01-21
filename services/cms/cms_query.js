@@ -31,6 +31,7 @@ const projectInformationQuery = gql`
       title
       linkCaption
       link
+      blurb
     }
   }
 `;
