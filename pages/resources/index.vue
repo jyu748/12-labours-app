@@ -31,25 +31,13 @@
 <script>
 import graphcmsQuery from "@/services/graphcmsQuery";
 
-const constructTopTools = (tools) => {
-  if (!tools.toolsList) return [];
-  return {
-    toolsList: tools.toolsList.map((tool) => {
-      return {
-        ...tool,
-        title: tool.title.replace(/ *\([^)]*\) */g, ""),
-      };
-    }),
-  };
-};
-
 export default {
   name: "ResourcesPage",
 
   async asyncData({ $graphcms }) {
     const banner = await graphcmsQuery.banner($graphcms, "resources");
     const topTools = await graphcmsQuery.topTools($graphcms, 3);
-    return { banner, topTools: constructTopTools(topTools) };
+    return { banner, topTools };
   },
 
   data: () => {

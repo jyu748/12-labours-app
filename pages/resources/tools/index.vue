@@ -31,18 +31,6 @@
 <script>
 import graphcmsQuery from "@/services/graphcmsQuery";
 
-const constructTopTools = (tools) => {
-  if (!tools.toolsList) return [];
-  return {
-    toolsList: tools.toolsList.map((tool) => {
-      return {
-        ...tool,
-        title: tool.title.replace(/ *\([^)]*\) */g, ""),
-      };
-    }),
-  };
-};
-
 export default {
   name: "ToolsPage",
 
@@ -53,7 +41,7 @@ export default {
     return {
       banner,
       toolsCategory,
-      topTools: constructTopTools(topTools),
+      topTools
     };
   },
 

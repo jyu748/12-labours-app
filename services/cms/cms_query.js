@@ -142,6 +142,7 @@ const topToolsQuery = gql`
       category
       blurb
       slug
+      link
     }
   }
 `;
@@ -158,6 +159,7 @@ const toolsQuery = gql`
       detail {
         html
       }
+      link
     }
   }
 `;

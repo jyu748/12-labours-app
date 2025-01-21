@@ -36,25 +36,13 @@
 <script>
 import graphcmsQuery from "@/services/graphcmsQuery";
 
-const constructTools = (tools) => {
-  if (!tools) return [];
-  return tools.map((tool) => {
-    const link = tool.title.match(/\(([^)]+)\)/);
-    return {
-      ...tool,
-      title: tool.title.replace(/ *\([^)]*\) */g, ""),
-      link: link ? link[1] : link,
-    };
-  });
-};
-
 export default {
   name: "ToolsItemDetail",
 
   async asyncData({ $graphcms, route }) {
     const slug = route.params.detail;
     const tools = await graphcmsQuery.tools($graphcms, slug);
-    return { toolsItem: constructTools(tools.toolsItem)[0] };
+    return { toolsItem: tools.toolsItem[0] };
   },
 
   data: () => {
