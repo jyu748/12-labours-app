@@ -4,9 +4,18 @@
         <div class="detail-container">
             <div class="vertical-flex">
                 <div class="project-title">
-                    <h1>{{ project.title[0] }} </h1>
+                    <h1>{{ projectTitle }}</h1>
                 </div>
-                <div class="project-detail" v-html="project.content[0].html"></div>
+                <div class="project-detail">
+                    <div v-if="htmlContent" v-html="htmlContent"></div>
+                    <object v-else :data="pdfContent" type="application/pdf" width="100%" height="1000"
+                        title="Embedded PDF Viewer">
+                        <p>
+                            Your browser does not support PDFs.
+                            <a :href="pdfContent" target="_blank">Download the PDF</a>
+                        </p>
+                    </object>
+                </div>
                 <div class="back-to-about">
                     <nuxt-link to="/about">&lt; Back to About</nuxt-link>
                 </div>
@@ -21,8 +30,8 @@ export default {
     name: "ProjectPage",
 
     async asyncData({ $graphcms, params }) {
-        const title = params.title
-        const project = await graphcmsQuery.projectInformation($graphcms, title)
+        const title = params.title;
+        const project = await graphcmsQuery.projectInformation($graphcms, title);
         return { project: project.values };
     },
 
@@ -50,6 +59,18 @@ export default {
                 },
             ]
         };
+    },
+
+    computed: {
+        projectTitle() {
+            return this.project.title[0];
+        },
+        htmlContent() {
+            return this.project.content[0]?.html;
+        },
+        pdfContent() {
+            return this.project.pdf[0]?.url;
+        },
     },
 
     created() {
@@ -82,9 +103,7 @@ export default {
     border-top: 1px solid $lineColor1;
     border-bottom: 1px solid $lineColor1;
     margin-bottom: 1.25rem;
-
 }
-
 
 .back-to-about {
     padding-top: 1rem;

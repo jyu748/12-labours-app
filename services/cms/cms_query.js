@@ -32,6 +32,9 @@ const projectInformationQuery = gql`
       linkCaption
       link
       blurb
+      pdf {
+        url
+      }
     }
   }
 `;
