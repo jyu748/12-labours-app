@@ -15,6 +15,7 @@ import {
   toolQuery,
   toolsCategoryQuery,
   resourceQuery,
+  topResourcesQuery,
   resourcesCategoryQuery,
   feedbackReasonQuery,
   contactReasonQuery,
@@ -152,6 +153,16 @@ async function toolsCategory(graphcms) {
   return await graphcms.request(toolsCategoryQuery);
 }
 
+async function topResources(graphcms, fetchCount) {
+  if (!graphcms.url) {
+    return cms_content.topResources;
+  }
+  const variable = {
+    fetchCount: fetchCount,
+  };
+  return await graphcms.request(topResourcesQuery, variable);
+}
+
 async function resource(graphcms, slug) {
   if (!graphcms.url) {
     return cms_content.resource[slug];
@@ -204,6 +215,7 @@ export default {
   topTools,
   tool,
   toolsCategory,
+  topResources,
   resource,
   resourcesCategory,
   banner,

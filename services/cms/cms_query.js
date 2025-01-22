@@ -186,6 +186,24 @@ const toolsCategoryQuery = gql`
   }
 `;
 
+const topResourcesQuery = gql`
+  query($fetchCount: Int) {
+    resourcesList: resourcesItems(first: $fetchCount) {
+      slug
+      title
+      blurb
+      detail {
+        html
+      }
+      link
+      image {
+        url
+      }
+      category
+    }
+  }
+`;
+
 const resourceQuery = gql`
   query($slug: String!) {
     resourceItem: resourcesItems(where: { slug: $slug }) {
@@ -257,6 +275,7 @@ module.exports = {
   topToolsQuery,
   toolQuery,
   toolsCategoryQuery,
+  topResourcesQuery,
   resourceQuery,
   resourcesCategoryQuery,
   feedbackReasonQuery,
