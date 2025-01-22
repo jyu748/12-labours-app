@@ -1,8 +1,8 @@
 import cms_content from "./cms/cms_content.json";
 import {
-  contentQuery,
+  titledContentQuery,
   multiContentQuery,
-  projectInformationQuery,
+  projectContentQuery,
   projectItemQuery,
   bannerQuery,
   topNewsQuery,
@@ -19,14 +19,14 @@ import {
   contactAreaQuery,
 } from "./cms/cms_query.js";
 
-async function content(graphcms, name) {
+async function titledContent(graphcms, name) {
   if (!graphcms.url) {
     return cms_content.content[name];
   }
   const variable = {
     name: name,
   };
-  return await graphcms.request(contentQuery, variable);
+  return await graphcms.request(titledContentQuery, variable);
 }
 
 async function multiContent(graphcms, name) {
@@ -39,14 +39,14 @@ async function multiContent(graphcms, name) {
   return await graphcms.request(multiContentQuery, variable);
 }
 
-async function projectInformation(graphcms, name) {
+async function projectContent(graphcms, name) {
   if (!graphcms.url) {
-    return cms_content.projectInformation[name];
+    return cms_content.projectContent[name];
   }
   const variable = {
     name: name,
   };
-  return await graphcms.request(projectInformationQuery, variable);
+  return await graphcms.request(projectContentQuery, variable);
 }
 
 async function projectItem(graphcms, name) {
@@ -172,9 +172,9 @@ async function contactArea(graphcms) {
 }
 
 export default {
-  content,
+  titledContent,
   multiContent,
-  projectInformation,
+  projectContent,
   projectItem,
   topNews,
   news,

@@ -1,6 +1,6 @@
 const { gql } = require("graphql-request");
 
-const contentQuery = gql`
+const titledContentQuery = gql`
   query($name: String!) {
     values: titledContent(where: { name: $name }) {
       content {
@@ -22,9 +22,9 @@ const multiContentQuery = gql`
   }
 `;
 
-const projectInformationQuery = gql`
+const projectContentQuery = gql`
   query($name: String!) {
-    values: projectInformation(where: { name: $name }) {
+    values: projectContent(where: { name: $name }) {
       title
     }
   }
@@ -217,9 +217,9 @@ const contactAreaQuery = gql`
 `;
 
 module.exports = {
-  contentQuery,
+  titledContentQuery,
   multiContentQuery,
-  projectInformationQuery,
+  projectContentQuery,
   projectItemQuery,
   bannerQuery,
   topNewsQuery,

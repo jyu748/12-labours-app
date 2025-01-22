@@ -1,5 +1,5 @@
 {
-    "content": {
+    "titledContent": {
         "about": {},
         "about_long": {}
     },
@@ -8,9 +8,10 @@
         "partners": {},
         "terms_of_service": {}
     },
-    "projectItem": {
-        "info": {}
+    "projectContent": {
+        "project_info": {}
     },
+    "projectItem": {},
     "banner": {
         "data_and_models": {},
         "news_and_events": {},

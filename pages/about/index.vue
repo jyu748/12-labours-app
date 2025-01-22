@@ -57,9 +57,9 @@ export default {
 
   async asyncData({ $graphcms }) {
     const [aboutLong, projectAims, projectInfo, partners, topNews, topEvents] = await Promise.all([
-      graphcmsQuery.content($graphcms, "about_long"),
+      graphcmsQuery.titledContent($graphcms, "about_long"),
       graphcmsQuery.multiContent($graphcms, "project_aims"),
-      graphcmsQuery.projectInformation($graphcms, "project-info"),
+      graphcmsQuery.projectContent($graphcms, "project_info"),
       graphcmsQuery.multiContent($graphcms, "partners"),
       graphcmsQuery.topNews($graphcms, 3),
       graphcmsQuery.topEvents($graphcms, 5),

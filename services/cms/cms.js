@@ -4,8 +4,9 @@ const fs = require("fs");
 
 const cms_template = require("./cms_template.json");
 const {
-  contentQuery,
+  titledContentQuery,
   multiContentQuery,
+  projectContentQuery,
   projectItemQuery,
   bannerQuery,
   topNewsQuery,
@@ -23,8 +24,9 @@ const {
 } = require("./cms_query.js");
 
 const withNameVariable = {
-  content: contentQuery,
+  titledContent: titledContentQuery,
   multiContent: multiContentQuery,
+  projectContent: projectContentQuery,
   projectItem: projectItemQuery,
   banner: bannerQuery,
 };
@@ -60,7 +62,10 @@ module.exports.cms_backup = async function() {
 
     if (type in withNameVariable) {
       query = withNameVariable[type];
-      const names = Object.keys(cms_template[type]);
+      let names = Object.keys(cms_template[type]);
+      if (type === 'projectItem') {
+        names = cms_template["projectContent"]['project_info']['values']['title'];
+      }
       for (let i = 0; i < names.length; i++) {
         const name = names[i];
         variable = {
