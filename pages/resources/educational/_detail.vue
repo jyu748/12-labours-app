@@ -4,29 +4,29 @@
     <div class="detail-container">
       <div class="vertical-flex">
         <div class="image-frame">
-          <img :src="toolItem.image.url" class="tools-image" />
+          <img :src="resourceItem.image.url" class="tools-image" />
         </div>
         <div class="tools-title">
           <h1>
-            {{ toolItem.title }}
-            <i v-if="toolItem.link" class="el-icon-link" @click="openLink(toolItem.link)"></i>
+            {{ resourceItem.title }}
+            <i v-if="resourceItem.link" class="el-icon-link" @click="openLink(resourceItem.link)"></i>
           </h1>
         </div>
         <div class="date-social flex-box --space-between --vertical-bottom">
           <div class="date-social__published flex-box --wrap">
             <!-- <span>Published&nbsp;</span>
             <span>
-                {{this.$formatDDMonthYear(toolItem.publishedDate)}}
+                {{this.$formatDDMonthYear(resourceItem.publishedDate)}}
             </span> -->
           </div>
           <!-- <social-box class="check-display"/>                   -->
         </div>
         <div class="tools-detail">
-          <span v-html="toolItem.detail.html"> </span>
+          <span v-html="resourceItem.detail.html"> </span>
         </div>
         <!-- <social-box/>     -->
         <div class="back-to">
-          <nuxt-link to="/resources/tools">&lt; Back to Tools</nuxt-link>
+          <nuxt-link to="/resources/technical">&lt; Back to Technical</nuxt-link>
         </div>
       </div>
     </div>
@@ -37,12 +37,12 @@
 import graphcmsQuery from "@/services/graphcmsQuery";
 
 export default {
-  name: "ToolItemDetail",
+  name: "ResourceItemDetail",
 
   async asyncData({ $graphcms, route }) {
     const slug = route.params.detail;
-    const tool = await graphcmsQuery.tool($graphcms, slug);
-    return { toolItem: tool.toolItem[0] };
+    const resource = await graphcmsQuery.resource($graphcms, slug);
+    return { resourceItem: resource.resourceItem[0] };
   },
 
   data: () => {
@@ -57,8 +57,8 @@ export default {
           label: "Resources",
         },
         {
-          to: { name: "resources-tools" },
-          label: "Tools",
+          to: { name: "resources-educational" },
+          label: "Educational",
         },
       ],
     };
@@ -73,7 +73,7 @@ export default {
   },
 
   created() {
-    this.pageTitle = this.toolItem.title;
+    this.pageTitle = this.resourceItem.title;
   },
 };
 </script>
