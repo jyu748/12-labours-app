@@ -26,8 +26,10 @@
     "event": {},
     "eventsCategory": {},
     "topTools": {},
-    "tools": {},
+    "tool": {},
     "toolsCategory": {},
+    "resource": {},
+    "resourcesCategory": {},
     "feedbackReason": {},
     "contactReason": {},
     "contactArea": {}

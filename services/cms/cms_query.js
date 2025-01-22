@@ -159,9 +159,9 @@ const topToolsQuery = gql`
   }
 `;
 
-const toolsQuery = gql`
+const toolQuery = gql`
   query($slug: String!) {
-    toolsItem: toolsItems(where: { slug: $slug }) {
+    toolItem: toolsItems(where: { slug: $slug }) {
       publishedDate
       title
       image {
@@ -179,6 +179,32 @@ const toolsQuery = gql`
 const toolsCategoryQuery = gql`
   query introspectToolsCategoryType {
     __type(name: "ToolsCategory") {
+      enumValues {
+        name
+      }
+    }
+  }
+`;
+
+const resourceQuery = gql`
+  query($slug: String!) {
+    resourceItem: resourcesItems(where: { slug: $slug }) {
+      title
+      blurb
+      detail {
+        html
+      }
+      link
+      image {
+        url
+      }
+    }
+  }
+`;
+
+const resourcesCategoryQuery = gql`
+  query introspectContactAreaType {
+    __type(name: "ResourcesCategory") {
       enumValues {
         name
       }
@@ -229,8 +255,10 @@ module.exports = {
   eventQuery,
   eventsCategoryQuery,
   topToolsQuery,
-  toolsQuery,
+  toolQuery,
   toolsCategoryQuery,
+  resourceQuery,
+  resourcesCategoryQuery,
   feedbackReasonQuery,
   contactReasonQuery,
   contactAreaQuery,

@@ -12,8 +12,10 @@ import {
   eventQuery,
   eventsCategoryQuery,
   topToolsQuery,
-  toolsQuery,
+  toolQuery,
   toolsCategoryQuery,
+  resourceQuery,
+  resourcesCategoryQuery,
   feedbackReasonQuery,
   contactReasonQuery,
   contactAreaQuery,
@@ -133,14 +135,14 @@ async function topTools(graphcms, fetchCount) {
   return await graphcms.request(topToolsQuery, variable);
 }
 
-async function tools(graphcms, slug) {
+async function tool(graphcms, slug) {
   if (!graphcms.url) {
-    return cms_content.tools[slug];
+    return cms_content.tool[slug];
   }
   const variable = {
     slug: slug,
   };
-  return await graphcms.request(toolsQuery, variable);
+  return await graphcms.request(toolQuery, variable);
 }
 
 async function toolsCategory(graphcms) {
@@ -148,6 +150,23 @@ async function toolsCategory(graphcms) {
     return cms_content.toolsCategory;
   }
   return await graphcms.request(toolsCategoryQuery);
+}
+
+async function resource(graphcms, slug) {
+  if (!graphcms.url) {
+    return cms_content.resource[slug];
+  }
+  const variable = {
+    slug: slug,
+  };
+  return await graphcms.request(resourceQuery, variable);
+}
+
+async function resourcesCategory(graphcms) {
+  if (!graphcms.url) {
+    return cms_content.resourcesCategory;
+  }
+  return await graphcms.request(resourcesCategoryQuery);
 }
 
 async function feedbackReason(graphcms) {
@@ -183,8 +202,10 @@ export default {
   event,
   eventsCategory,
   topTools,
-  tools,
+  tool,
   toolsCategory,
+  resource,
+  resourcesCategory,
   banner,
   feedbackReason,
   contactReason,

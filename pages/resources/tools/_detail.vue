@@ -41,8 +41,8 @@ export default {
 
   async asyncData({ $graphcms, route }) {
     const slug = route.params.detail;
-    const tools = await graphcmsQuery.tools($graphcms, slug);
-    return { toolsItem: tools.toolsItem[0] };
+    const tools = await graphcmsQuery.tool($graphcms, slug);
+    return { toolsItem: tools.toolItem[0] };
   },
 
   data: () => {

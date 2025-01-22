@@ -17,7 +17,7 @@
                     </object>
                 </div>
                 <div class="back-to-about">
-                    <nuxt-link to="/about">&lt; Back to About</nuxt-link>
+                    <nuxt-link to="/about/">&lt; Back to About</nuxt-link>
                 </div>
             </div>
         </div>
