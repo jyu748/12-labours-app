@@ -6,7 +6,7 @@ const cms_template = require("./cms_template.json");
 const {
   contentQuery,
   multiContentQuery,
-  projectInformationQuery,
+  projectItemQuery,
   bannerQuery,
   topNewsQuery,
   newsQuery,
@@ -25,7 +25,7 @@ const {
 const withNameVariable = {
   content: contentQuery,
   multiContent: multiContentQuery,
-  projectInformation: projectInformationQuery,
+  projectItem: projectItemQuery,
   banner: bannerQuery,
 };
 

@@ -25,6 +25,14 @@ const multiContentQuery = gql`
 const projectInformationQuery = gql`
   query($name: String!) {
     values: projectInformation(where: { name: $name }) {
+      title
+    }
+  }
+`;
+
+const projectItemQuery = gql`
+  query($name: String!) {
+    projectItem: projectsItem(where: { name: $name }) {
       content {
         html
       }
@@ -212,6 +220,7 @@ module.exports = {
   contentQuery,
   multiContentQuery,
   projectInformationQuery,
+  projectItemQuery,
   bannerQuery,
   topNewsQuery,
   newsQuery,

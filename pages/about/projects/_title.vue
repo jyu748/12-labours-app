@@ -31,8 +31,8 @@ export default {
 
     async asyncData({ $graphcms, params }) {
         const title = params.title;
-        const project = await graphcmsQuery.projectInformation($graphcms, title);
-        return { project: project.values };
+        const project = await graphcmsQuery.projectItem($graphcms, title);
+        return { project: project.projectItem };
     },
 
     data: () => {

@@ -26,7 +26,7 @@
           PROJECT INFORMATION
         </h1>
         <el-collapse accordion>
-          <el-collapse-item v-for="(item, index) in projectInfo" :key="index" :title="item.title[0].toUpperCase()"
+          <el-collapse-item v-for="(item, index) in projects" :key="index" :title="item.title[0].toUpperCase()"
             :name="index">
             <div>{{ item.blurb[0] }}</div>
             <div class="nav-button" v-if="item.linkCaption.length">
@@ -56,14 +56,7 @@ export default {
   name: "AboutPage",
 
   async asyncData({ $graphcms }) {
-    const [
-      aboutLong,
-      projectAims,
-      dataInfo,
-      partners,
-      topNews,
-      topEvents,
-    ] = await Promise.all([
+    const [aboutLong, projectAims, projectInfo, partners, topNews, topEvents] = await Promise.all([
       graphcmsQuery.content($graphcms, "about_long"),
       graphcmsQuery.multiContent($graphcms, "project_aims"),
       graphcmsQuery.projectInformation($graphcms, "project-info"),
@@ -72,18 +65,15 @@ export default {
       graphcmsQuery.topEvents($graphcms, 5),
     ]);
     const projects = await Promise.all(
-      dataInfo.values.title.map(async (title) => {
-        const project = await graphcmsQuery.projectInformation(
-          $graphcms,
-          title
-        );
-        return project.values;
+      projectInfo.values.title.map(async (title) => {
+        const project = await graphcmsQuery.projectItem($graphcms, title);
+        return project.projectItem;
       })
     );
     return {
       aboutLong: aboutLong.values,
       projectAims: projectAims.values,
-      projectInfo: projects,
+      projects,
       partners: partners.values,
       topNews,
       topEvents,

@@ -3,6 +3,7 @@ import {
   contentQuery,
   multiContentQuery,
   projectInformationQuery,
+  projectItemQuery,
   bannerQuery,
   topNewsQuery,
   newsQuery,
@@ -46,6 +47,16 @@ async function projectInformation(graphcms, name) {
     name: name,
   };
   return await graphcms.request(projectInformationQuery, variable);
+}
+
+async function projectItem(graphcms, name) {
+  if (!graphcms.url) {
+    return cms_content.projectItem[name];
+  }
+  const variable = {
+    name: name,
+  };
+  return await graphcms.request(projectItemQuery, variable);
 }
 
 async function banner(graphcms, name) {
@@ -164,6 +175,7 @@ export default {
   content,
   multiContent,
   projectInformation,
+  projectItem,
   topNews,
   news,
   newsCategory,
