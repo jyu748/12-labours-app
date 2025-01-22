@@ -82,6 +82,7 @@ export default {
       "~/components/Tools",
       "~/components/PortalHelp",
       "~/components/Contact",
+      "~/components/Items",
     ],
   },
 
