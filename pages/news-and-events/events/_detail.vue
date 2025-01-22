@@ -44,8 +44,8 @@
           </span>
         </div>         
         <social-box/>    
-        <div class="back-to-event">
-          <nuxt-link to="/news-and-events/events/">&lt; Back to Events</nuxt-link>
+        <div class="back-to">
+          <nuxt-link to="/news-and-events/events">&lt; Back to Events</nuxt-link>
         </div>
       </div>
     </div>
@@ -137,14 +137,6 @@ export default {
     border-top: 1px solid $lineColor1;
     border-bottom: 1px solid $lineColor1;
     margin-bottom:1.25rem;   
-  }
-
-  .back-to-event{
-    padding-top:1rem;
-    padding-bottom:0.5rem;
-    a{
-      line-height:1.25rem;
-    }
   }
 
   .check-display{

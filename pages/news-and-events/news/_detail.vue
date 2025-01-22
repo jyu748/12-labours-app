@@ -23,8 +23,8 @@
           </span>
         </div>         
         <social-box/>    
-        <div class="back-to-news">
-          <nuxt-link to="/news-and-events/news/">&lt; Back to News</nuxt-link>
+        <div class="back-to">
+          <nuxt-link to="/news-and-events/news">&lt; Back to News</nuxt-link>
         </div>
       </div>
     </div>
@@ -115,14 +115,6 @@ export default {
     border-top:1px solid $lineColor1;
     border-bottom:1px solid $lineColor1;
     margin-bottom:1.25rem;     
-  }
-
-  .back-to-news{
-    padding-top:1rem;
-    padding-bottom:0.5rem;
-    a{
-      line-height:1.25rem;
-    }
   }
   
   .check-display{

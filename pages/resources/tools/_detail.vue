@@ -25,8 +25,8 @@
           <span v-html="toolsItem.detail.html"> </span>
         </div>
         <!-- <social-box/>     -->
-        <div class="back-to-tools">
-          <nuxt-link to="/resources/tools/">&lt; Back to Tools</nuxt-link>
+        <div class="back-to">
+          <nuxt-link to="/resources/tools">&lt; Back to Tools</nuxt-link>
         </div>
       </div>
     </div>
@@ -41,8 +41,8 @@ export default {
 
   async asyncData({ $graphcms, route }) {
     const slug = route.params.detail;
-    const tools = await graphcmsQuery.tool($graphcms, slug);
-    return { toolsItem: tools.toolItem[0] };
+    const tool = await graphcmsQuery.tool($graphcms, slug);
+    return { toolsItem: tool.toolItem[0] };
   },
 
   data: () => {
@@ -132,15 +132,6 @@ export default {
   border-top: 1px solid $lineColor1;
   border-bottom: 1px solid $lineColor1;
   margin-bottom: 1.25rem;
-}
-
-.back-to-tools {
-  padding-top: 1rem;
-  padding-bottom: 0.5rem;
-
-  a {
-    line-height: 1.25rem;
-  }
 }
 
 .check-display {

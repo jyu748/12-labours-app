@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="view-all">
-      <nuxt-link to="/resources/tools/">VIEW ALL TOOLS</nuxt-link>
+      <nuxt-link to="/resources/tools">VIEW ALL TOOLS</nuxt-link>
     </div>
   </div>
 </template>

@@ -16,8 +16,8 @@
                         </p>
                     </object>
                 </div>
-                <div class="back-to-about">
-                    <nuxt-link to="/about/">&lt; Back to About</nuxt-link>
+                <div class="back-to">
+                    <nuxt-link to="/about">&lt; Back to About</nuxt-link>
                 </div>
             </div>
         </div>
@@ -103,14 +103,5 @@ export default {
     border-top: 1px solid $lineColor1;
     border-bottom: 1px solid $lineColor1;
     margin-bottom: 1.25rem;
-}
-
-.back-to-about {
-    padding-top: 1rem;
-    padding-bottom: 0.5rem;
-
-    a {
-        line-height: 1.25rem;
-    }
 }
 </style>

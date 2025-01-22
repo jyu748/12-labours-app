@@ -31,6 +31,9 @@
             @select-page="onPaginationChange"
           />       
         </div> 
+        <div class="back-to">
+          <nuxt-link to="/news-and-events">&lt; Back to News & Events</nuxt-link>
+        </div> 
       </div>     
     </div>
   </div>

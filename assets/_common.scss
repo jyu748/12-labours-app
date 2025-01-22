@@ -221,3 +221,12 @@ a {
 ::v-deep .el-select .el-input .el-select__caret.is-reverse {
   padding-top: 0 !important;
 }
+
+.back-to {
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+
+  a {
+    line-height: 1.25rem;
+  }
+}

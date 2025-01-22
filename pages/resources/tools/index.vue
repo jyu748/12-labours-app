@@ -23,9 +23,9 @@
         <div class="paginator" :style="this.toolsList.length == 0 ? 'display:none' : ''">
           <pagination :total-count="totalCount" :page-size="pageSize" @select-page="onPaginationChange" />
         </div>
-      </div>
-      <div class="back-to-resources">
-        <nuxt-link to="/resources/">&lt; Back to Resources</nuxt-link>
+        <div class="back-to">
+          <nuxt-link to="/resources">&lt; Back to Resources</nuxt-link>
+        </div>
       </div>
     </div>
   </div>
@@ -135,14 +135,5 @@ export default {
 
 .not-found {
   padding: 2rem 0;
-}
-
-.back-to-resources {
-    padding-top: 1rem;
-    padding-bottom: 0.5rem;
-
-    a {
-        line-height: 1.25rem;
-    }
 }
 </style>
