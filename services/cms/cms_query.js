@@ -30,6 +30,31 @@ const projectContentQuery = gql`
   }
 `;
 
+const bannerQuery = gql`
+  query($name: String!) {
+    values: bannerImage(where: { name: $name }) {
+      image {
+        url
+      }
+      title
+    }
+  }
+`;
+
+const publicationContentQuery = gql`
+query($name: String!) {
+    values: publicationContent(where: { name: $name }) {
+      title
+      short {
+        html
+      }
+      long {
+        html
+      }
+    }
+  }
+`;
+
 const projectItemQuery = gql`
   query($name: String!) {
     projectItem: projectsItem(where: { name: $name }) {
@@ -43,17 +68,6 @@ const projectItemQuery = gql`
       pdf {
         url
       }
-    }
-  }
-`;
-
-const bannerQuery = gql`
-  query($name: String!) {
-    values: bannerImage(where: { name: $name }) {
-      image {
-        url
-      }
-      title
     }
   }
 `;
@@ -266,6 +280,7 @@ module.exports = {
   projectContentQuery,
   projectItemQuery,
   bannerQuery,
+  publicationContentQuery,
   topNewsQuery,
   newsQuery,
   newsCategoryQuery,

@@ -9,6 +9,7 @@ const {
   projectContentQuery,
   projectItemQuery,
   bannerQuery,
+  publicationContentQuery,
   topNewsQuery,
   newsQuery,
   newsCategoryQuery,
@@ -29,6 +30,7 @@ const withNameVariable = {
   projectContent: projectContentQuery,
   projectItem: projectItemQuery,
   banner: bannerQuery,
+  publicationContent: publicationContentQuery
 };
 
 const withCountVariable = {
