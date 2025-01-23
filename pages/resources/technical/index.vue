@@ -4,7 +4,7 @@
     <div class="container-default vertical-flex">
       <h1>Technical Resources</h1>
       <div class="default-inner">
-        <item-card-group :itemList="topResources.resourcesList" linkName="resources-technical" />
+        <item-card-group :itemList="topResources.resourcesList" readMoreLink="resources-technical" />
         <div class="back-to">
           <nuxt-link to="/resources">&lt; Back to Resources</nuxt-link>
         </div>

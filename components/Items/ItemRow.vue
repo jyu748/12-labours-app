@@ -7,7 +7,7 @@
       <div class="item-row__info vertical-flex">
         <div class="item-row-title display-ellipsis --2">
           <nuxt-link :to="{
-            name: `${linkName}-detail`,
+            name: `${readMoreLink}-detail`,
             params: { detail: item.slug },
           }">
             <h4>{{ item.title }}</h4>
@@ -32,7 +32,7 @@ export default {
       type: Object,
       default: {},
     },
-    linkName: {
+    readMoreLink: {
       type: String,
       default: "",
     }

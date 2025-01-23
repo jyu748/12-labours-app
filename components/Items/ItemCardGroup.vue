@@ -5,8 +5,11 @@
     </div>
     <div class="cards-in-row">
       <div v-for="item in itemList" :key="item.index">
-        <item-card :item="item" :linkName="linkName" />
+        <item-card :item="item" :readMoreLink="readMoreLink" />
       </div>
+    </div>
+    <div v-if="viewAllLink" class="view-all">
+      <nuxt-link :to="viewAllLink">VIEW ALL</nuxt-link>
     </div>
   </div>
 </template>
@@ -24,7 +27,11 @@ export default {
       type: Array,
       default: [],
     },
-    linkName: {
+    readMoreLink: {
+      type: String,
+      default: "",
+    },
+    viewAllLink: {
       type: String,
       default: "",
     },
