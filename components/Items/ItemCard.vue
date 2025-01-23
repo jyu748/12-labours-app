@@ -14,7 +14,7 @@
       </div>
       <div class="item-card__button">
         <nuxt-link :to="{
-          name: `${readMoreLink}-detail`,
+          name: linkName,
           params: { detail: item.slug },
         }">
           <el-button>
@@ -35,10 +35,16 @@ export default {
       type: Object,
       default: {},
     },
-    readMoreLink: {
+    link: {
       type: String,
       default: "",
     }
+  },
+
+  computed: {
+    linkName() {
+      return `${this.link.slice(1).replace("/", "-")}-detail`;
+    },
   },
 };
 </script>

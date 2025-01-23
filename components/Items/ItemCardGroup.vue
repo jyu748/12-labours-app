@@ -5,11 +5,11 @@
     </div>
     <div class="cards-in-row">
       <div v-for="item in itemList" :key="item.index">
-        <item-card :item="item" :readMoreLink="readMoreLink" />
+        <item-card :item="item" :link="link" />
       </div>
     </div>
-    <div v-if="viewAllLink" class="view-all">
-      <nuxt-link :to="viewAllLink">VIEW ALL</nuxt-link>
+    <div v-if="viewAll" class="view-all">
+      <nuxt-link :to="link">VIEW ALL {{ viewAll.toUpperCase() }}</nuxt-link>
     </div>
   </div>
 </template>
@@ -27,11 +27,11 @@ export default {
       type: Array,
       default: [],
     },
-    readMoreLink: {
+    link: {
       type: String,
       default: "",
     },
-    viewAllLink: {
+    viewAll: {
       type: String,
       default: "",
     },

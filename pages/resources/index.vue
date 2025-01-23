@@ -3,7 +3,7 @@
     <breadcrumb-trail :breadcrumb="breadcrumb" :title="pageTitle" />
     <banner :banner-data="banner.values" height="30rem" />
     <!-- Optional height attribute to display varying heights-->
-    <latest-tools :toolsList="topTools.toolsList" />
+    <item-card-group title="Latest Tools" :itemList="topTools.toolsList" link="/resources/tools" viewAll="tools" />
     <!--
     <div class="container-default">
       <div class="cards-in-row">
