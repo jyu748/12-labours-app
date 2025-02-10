@@ -9,7 +9,7 @@ const {
   projectContentQuery,
   projectItemQuery,
   bannerQuery,
-  publicationContentQuery,
+  publicationsItemQuery,
   topNewsQuery,
   newsQuery,
   newsCategoryQuery,
@@ -29,14 +29,14 @@ const withNameVariable = {
   multiContent: multiContentQuery,
   projectContent: projectContentQuery,
   projectItem: projectItemQuery,
-  banner: bannerQuery,
-  publicationContent: publicationContentQuery
+  banner: bannerQuery
 };
 
 const withCountVariable = {
   topNews: { query: topNewsQuery, count: 3 },
   topEvents: { query: topEventsQuery, count: 5 },
   topTools: { query: topToolsQuery, count: 3 },
+  publicationsItem: { query: publicationsItemQuery }
 };
 
 const withSlugVariable = {
@@ -55,7 +55,7 @@ const withoutVariable = {
   contactArea: contactAreaQuery,
 };
 
-module.exports.cms_backup = async function() {
+module.exports.cms_backup = async function () {
   cms_client = new GraphQLClient(process.env.GRAPHCMS_ENDPOINT);
 
   cms_types = Object.keys(cms_template);
@@ -116,7 +116,7 @@ module.exports.cms_backup = async function() {
     "./services/cms/cms_content.json",
     JSON.stringify(cms_template, null, 4),
     "utf8",
-    function(err) {
+    function (err) {
       if (err) {
         throw err;
       }

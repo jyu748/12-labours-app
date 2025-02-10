@@ -19,9 +19,7 @@
         "news": {},
         "resources": {}
     },
-    "publicationContent": {
-        "publications": {}
-    },
+    "publicationsItem": {},
     "topNews": {},
     "news": {},
     "newsCategory": {},

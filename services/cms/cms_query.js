@@ -41,14 +41,15 @@ const bannerQuery = gql`
   }
 `;
 
-const publicationContentQuery = gql`
-query($name: String!) {
-    values: publicationContent(where: { name: $name }) {
+const publicationsItemQuery = gql`
+  query ($fetchCount: Int) {
+    values: publicationsItems(first: $fetchCount, orderBy: year_DESC) {
+      year
       title
-      short {
+      section {
         html
       }
-      long {
+      content {
         html
       }
     }
@@ -280,7 +281,7 @@ module.exports = {
   projectContentQuery,
   projectItemQuery,
   bannerQuery,
-  publicationContentQuery,
+  publicationsItemQuery,
   topNewsQuery,
   newsQuery,
   newsCategoryQuery,

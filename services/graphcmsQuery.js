@@ -5,7 +5,7 @@ import {
   projectContentQuery,
   projectItemQuery,
   bannerQuery,
-  publicationContentQuery,
+  publicationsItemQuery,
   topNewsQuery,
   newsQuery,
   newsCategoryQuery,
@@ -73,14 +73,14 @@ async function banner(graphcms, name) {
   return await graphcms.request(bannerQuery, variable);
 }
 
-async function publicationContent(graphcms, name) {
+async function publicationsItem(graphcms, fetchCount) {
   if (!graphcms.url) {
-    return cms_content.publicationContent[name];
+    return cms_content.publicationsItem;
   }
   const variable = {
-    name: name,
+    fetchCount: fetchCount,
   };
-  return await graphcms.request(publicationContentQuery, variable);
+  return await graphcms.request(publicationsItemQuery, variable);
 }
 
 async function topNews(graphcms, fetchCount) {
@@ -233,5 +233,5 @@ export default {
   feedbackReason,
   contactReason,
   contactArea,
-  publicationContent
+  publicationsItem
 };

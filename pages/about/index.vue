@@ -42,12 +42,13 @@
     </div>
     <div class="container-default shaded flex-box">
       <div class="vertical-flex">
-        <h1 class="top-heading">
-          {{ publication.title.toUpperCase() }}
-        </h1>
-        <div v-html="publication.short.html"></div>
+        <h1 class="top-heading">PUBLICATIONS</h1>
+        <div v-for="publication in publicationsList">
+          <h4>{{ publication.year }}</h4>
+          <div v-html="publication.section.html"></div>
+        </div>
         <div class="view-all">
-          <nuxt-link to="about/publication">VIEW ALL PUBLICATIONS</nuxt-link>        
+          <nuxt-link to="about/publication">VIEW ALL PUBLICATIONS</nuxt-link>
         </div>
       </div>
     </div>
@@ -67,14 +68,14 @@ export default {
   name: "AboutPage",
 
   async asyncData({ $graphcms }) {
-    const [aboutLong, projectAims, projectInfo, partners, topNews, topEvents, publication] = await Promise.all([
+    const [aboutLong, projectAims, projectInfo, partners, topNews, topEvents, publications] = await Promise.all([
       graphcmsQuery.titledContent($graphcms, "about_long"),
       graphcmsQuery.multiContent($graphcms, "project_aims"),
       graphcmsQuery.projectContent($graphcms, "project_info"),
       graphcmsQuery.multiContent($graphcms, "partners"),
       graphcmsQuery.topNews($graphcms, 3),
       graphcmsQuery.topEvents($graphcms, 5),
-      graphcmsQuery.publicationContent($graphcms, "publications"),
+      graphcmsQuery.publicationsItem($graphcms, 3),
     ]);
     const projects = await Promise.all(
       projectInfo.values.title.map(async (title) => {
@@ -89,7 +90,7 @@ export default {
       partners: partners.values,
       topNews,
       topEvents,
-      publication: publication.values,
+      publicationsList: publications.values,
     };
   },
 
@@ -161,11 +162,12 @@ export default {
   padding-top: 1rem;
 }
 
-.view-all{
-    padding-top:2.38rem;
-    text-align: center; 
-    a{
-      font-weight:600;
-    }
+.view-all {
+  padding-top: 2.38rem;
+  text-align: center;
+
+  a {
+    font-weight: 600;
   }
+}
 </style>
