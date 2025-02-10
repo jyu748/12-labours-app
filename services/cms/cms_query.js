@@ -22,9 +22,9 @@ const multiContentQuery = gql`
   }
 `;
 
-const projectContentQuery = gql`
+const projectInfoQuery = gql`
   query($name: String!) {
-    values: projectContent(where: { name: $name }) {
+    values: projectInfo(where: { name: $name }) {
       title
     }
   }
@@ -66,9 +66,6 @@ const projectItemQuery = gql`
       linkCaption
       link
       blurb
-      pdf {
-        url
-      }
     }
   }
 `;
@@ -278,7 +275,7 @@ const contactAreaQuery = gql`
 module.exports = {
   titledContentQuery,
   multiContentQuery,
-  projectContentQuery,
+  projectInfoQuery,
   projectItemQuery,
   bannerQuery,
   publicationsItemQuery,

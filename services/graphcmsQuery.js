@@ -2,7 +2,7 @@ import cms_content from "./cms/cms_content.json";
 import {
   titledContentQuery,
   multiContentQuery,
-  projectContentQuery,
+  projectInfoQuery,
   projectItemQuery,
   bannerQuery,
   publicationsItemQuery,
@@ -43,14 +43,14 @@ async function multiContent(graphcms, name) {
   return await graphcms.request(multiContentQuery, variable);
 }
 
-async function projectContent(graphcms, name) {
+async function projectInfo(graphcms, name) {
   if (!graphcms.url) {
-    return cms_content.projectContent[name];
+    return cms_content.projectInfo[name];
   }
   const variable = {
     name: name,
   };
-  return await graphcms.request(projectContentQuery, variable);
+  return await graphcms.request(projectInfoQuery, variable);
 }
 
 async function projectItem(graphcms, name) {
@@ -215,7 +215,7 @@ async function contactArea(graphcms) {
 export default {
   titledContent,
   multiContent,
-  projectContent,
+  projectInfo,
   projectItem,
   topNews,
   news,
